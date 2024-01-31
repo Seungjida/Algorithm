@@ -14,3 +14,6 @@ for test_case in range(1, 11):
             count += min((buildings[number] - left_max), (buildings[number] - right_max))
 
     print(f'#{test_case} {count}')
+
+
+# 5개씩 한번에 봐도 됨
