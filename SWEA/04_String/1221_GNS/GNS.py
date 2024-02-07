@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open("GNS_test_input.txt", "r")
+# import sys
+# sys.stdin = open("GNS_test_input.txt", "r")
 
 word_number = {"ZRO": 0, "ONE": 1, "TWO": 2, "THR": 3, "FOR":4,
                "FIV": 5, "SIX": 6, "SVN": 7, "EGT": 8, "NIN": 9}

@@ -1,10 +1,18 @@
 def KMP(pattern, target):
     def make_lps():
+        # 패턴을 "전처리"하여 잘못된 시작을 최소화 함
         # 내 앞에 나와 동일한 패턴이 몇번 나왔는지 세어주는 리스트
         lps = [0] * len(pattern)
         for idx in range(1, len(pattern)): # 0번 인덱스는 앞에 중복되는 값 없음
+            # lps 배열은 pattern에서 해당 인덱스가 가진 값과 같은 값이 있는 곳의 인덱스를 가지고 있다.
+            # pattern과 target이 같은 값이 나오기 전까지는 같은 값이 있는 곳의 인덱스를 모르니까 0을 가지고 있고 이는 pattern의 첫번째 값
+
+            # 만약 pattern[0](젤 첫번째거 찾았다고 가정)과 같은 값을 가진 0 이후의 pattern 인덱스를 찾는다면
             if pattern[lps[idx-1]] == pattern[idx]:
+                # 그 인덱스에 해당하는 lps 값을 전 인덱스 값 + 1 한다, 패턴 매칭에 실패했을 경우 돌아가는 위치
+                # 그 전까지는 다 맞았으면 굳이 돌아갈 필요 없잖아
                 lps[idx] = lps[idx - 1] + 1
+        # 돌아갈 곳을 나타내는 값이 1이상이니까.........
         lps.insert(0, -1)
         return lps
 

@@ -1,5 +1,7 @@
-import sys
-sys.stdin = open("input.txt", "r")
+# import sys
+# sys.stdin = open("input.txt", "r")
+
+# 담부턴 전치행렬 써볼게욤..
 
 for test_case in range(1, 11):
     length = int(input())
