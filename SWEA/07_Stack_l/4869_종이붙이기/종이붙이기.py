@@ -24,7 +24,7 @@ for test_case in range(1, T + 1):
     for case in cases:
         tmp_count = 1
         if 20 in case.keys():
-            tmp_count *=
+            tmp_count *= 2
         if len(case) == 2:
             tmp_count *= 2
         count += tmp_count
