@@ -30,7 +30,9 @@ def backtracking(i):
             if promising(i):
                 # 조건에 맞으면 다음 row의 col 값을 결정하러 간다.
                 backtracking(i+1)
-                row[i] = -1
+                # 어차피 row[i] 값의 변화는 이 if문 밖에서 이뤄지기때문에 다음 실행에 알아서 잘 바뀔 겨
+                # 굳이 미방문 처리를 하지 않아도 됨
+                # row[i] = -1
 
 backtracking(0)
 print(count)
