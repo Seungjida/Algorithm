@@ -14,10 +14,8 @@ for test_case in range(1, 11):
     icp = {'(': 3, '+': 1, '-': 1, ('*', '/'): 2}
 
     for token in cal_string:
-        # 피연산자다
         if token.isdigit():
             postfix_notation.append(token)
-        # 연산자다! 코드 넘 복잡하네 좀 고쳐보이소
         else:
             while True:
                 if token == ')':
@@ -35,6 +33,8 @@ for test_case in range(1, 11):
                     postfix_notation.append(stack.pop())
                     top -= 1
     try:
+        # 이 부분말고 계산기2랑 똑같이 했어요
+        # 2가 더 정확합니다 ㅎㅎ 그거 봐주세욤
         if stack[top] in '+-/%':
             postfix_notation.append(stack[top])
         stack.pop()
