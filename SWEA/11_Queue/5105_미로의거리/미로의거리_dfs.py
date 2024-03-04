@@ -1,39 +1,38 @@
-# 최단거리 구할 때는 bfs가 좋당
+# 그냥 연습
 from collections import deque
-import sys
+# import sys
 
-sys.stdin = open("input.txt", "r")
+# sys.stdin = open("input.txt", "r")
 
 T = int(input())
 
-# 대각선은 안 봐도 되겠지
 di = [0, 0, -1, 1]
 dj = [1, -1, 0, 0]
 
 
-def bfs(start):
+def dfs(start):
     dq = deque([start])
     count_list = []
-
-    # 몇 번째로 방문하는지 어떻게 계산해야할지 몰라서 헤맴
+    
     while dq:
-        now = dq.popleft()
+        now = dq.pop()
         visited[now[0]][now[1]] += 1
 
-        for movement in range(4):
-            ni = now[0] + di[movement]
-            nj = now[1] + dj[movement]
+        for i in range(4):
+            ni = now[0] + di[i]
+            nj = now[1] + dj[i]
             if 0 <= ni < n and 0 <= nj < n:
                 if arr[ni][nj] == 3:
                     count_list.append(visited[now[0]][now[1]]-1)
-                if visited[ni][nj] == 0 and arr[ni][nj] == 0:
+                    break
+                elif arr[ni][nj] == 0 and visited[ni][nj] == 0:
                     dq.append([ni, nj])
                     visited[ni][nj] = visited[now[0]][now[1]]
     if count_list:
         return min(count_list)
     else:
         return 0
-
+    
 
 for test_case in range(1, T + 1):
     n = int(input())
@@ -50,5 +49,4 @@ for test_case in range(1, T + 1):
         if start:
             break
 
-    # 출발점에서 도착점까지 델타 탐색 + bfs
-    print(f'#{test_case} {bfs(start)}')
+    print(f'#{test_case} {dfs(start)}')
