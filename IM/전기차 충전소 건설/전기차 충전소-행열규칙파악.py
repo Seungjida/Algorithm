@@ -26,12 +26,15 @@ for tc in range(1, T+1):
         # 집 좌표와 거리 넣음
         homes.append([x, y, d])
 
+        # + 모양이랑 곱하기 모양으로 델타 탐색해서 locations를 찾으려고 했는데 마름모가 아니라 꽃 모양처럼 나옴 왜그런지 다시 찾아보기
+        # 그래서 집 좌표 기준으로 행의 차이를 활용해서 r을 선언하고 값 바꿈
         di = [1, -1]
         # 집 기준으로 -d ~ d까지의 row 가짐
         for r in range(-d, d + 1):
-            # 중간 기준으로 몇 개 더 볼 거야
+            # 그 행에 들어가면 중간 값 그러니까 집의 y값은 같고 x값이 양 옆으로 동시에 증가한다고 생각
             many = (d*2+1) - abs(r*2)
 
+            # 집과 같은 x값과 행의 차이를 반영한 y값이 기준이 되어 양 옆으로 탐색할 거임
             ni = x
             nj = y - r
             if -15 <= ni <= 15 and -15 <= nj <= 15 and r!=0:
@@ -40,7 +43,7 @@ for tc in range(1, T+1):
                 else:
                     locations[(ni, nj)] = 1
 
-            # 해당 col을 조건 따지며 봄
+            # x값을 바꾸며 후보가 될 수 있는 거 찾아서 locations에 저장
             for k in range(2 * (many//2)):
                 ni = x + (di[k % 2] * (k // 2 + 1))
                 if -15 <= ni <= 15 and -15 <= nj <= 15:

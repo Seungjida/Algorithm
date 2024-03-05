@@ -33,6 +33,7 @@ for tc in range(1, T+1):
         homes.append([x,y,d])
 
         # 일단 귀찮으니까 델타로 가능한 거 돌까
+        # 안됨!!!!!!!!!!!!!!!!!!!!!!!!!!! 마름모가 아니라 꽃 모양으로 나와...
         for pl in range(4*d):
             ci = x + (di_plus[pl%4] * (pl//4 + 1))
             cj = y + (dj_plus[pl%4] * (pl//4 + 1))
