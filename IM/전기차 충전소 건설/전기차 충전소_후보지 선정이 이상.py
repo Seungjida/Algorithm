@@ -34,6 +34,8 @@ for tc in range(1, T+1):
 
         # 일단 귀찮으니까 델타로 가능한 거 돌까
         # 안됨!!!!!!!!!!!!!!!!!!!!!!!!!!! 마름모가 아니라 꽃 모양으로 나와...
+        # d가 4까지는 만족하겠지만 5이상부터는 sqrt()한 게 2를 나눈 거랑 같지 않음
+        # d=9라고 치면 d//2 만큼 곱하기 모양 돌았을 때 4번 더 가는데 그건 약 12만큼의 거리차가 남 
         for pl in range(4*d):
             ci = x + (di_plus[pl%4] * (pl//4 + 1))
             cj = y + (dj_plus[pl%4] * (pl//4 + 1))
@@ -45,7 +47,7 @@ for tc in range(1, T+1):
                 else:
                     locations[(ci, cj)] = 1
 
-        for mul in range(4 * (d-1)):
+        for mul in range(4 * (d//2)):
             ci = x + (di_mul[mul % 4] * (mul // 4 + 1))
             cj = y + (dj_mul[mul % 4] * (mul // 4 + 1))
 
